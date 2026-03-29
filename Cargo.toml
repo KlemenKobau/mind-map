@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-ollama-rs = "0.3.4"
+ollama-rs = { version = "0.3.4", features = ["tool-implementations"] }
 tokio = { version = "1", features = ["full"] }
 anyhow = "1.0"
