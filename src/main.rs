@@ -44,15 +44,13 @@ async fn main() -> Result<()> {
     dbg!(&format);
     let res = ollama
         .generate(
-            GenerationRequest::new(
-                "qwen3.5:4b".to_string(),
-                "I would like to learn more about cars. Return a JSON where the name is the topic and put the description in the description",
-            )
-            .format(format),
+            GenerationRequest::new("qwen3.5:4b".to_string(), "Tell me more about cars")
+                .format(format)
+                .think(false),
         )
         .await?;
 
-    dbg!(&res);
+    dbg!(&res.response);
     let resp: NodeData = serde_json::from_str(&res.response)?;
 
     Ok(())
